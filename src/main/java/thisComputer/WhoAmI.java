@@ -1,4 +1,4 @@
-package operatingSystem;
+package thisComputer;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -43,9 +43,10 @@ public class WhoAmI
 		//TODO ::: generate a basic os informaton for the old command howami
 		setOsName(System.getProperty( "os.name" ).toLowerCase().toString());
 		setOsUser(System.getProperty( "user.name" ).toLowerCase().toString());
-		 IpAddress();
+		
 	}
 
+	//TODO erase this class.
 
 }
 

@@ -1,12 +1,16 @@
-package operatingSystem;
+package thisComputer;
 
 public class Os 
 {
 	public static void main(String[] args) 
 	{
-		WhoAmI wai = new WhoAmI();
+		
 //		System.out.println("OS Name :: " + wai.getOsName());
 //		System.out.println("OS User :: " + wai.getOsUser());
-//		System.out.println("OS IP   :: " + wai.getOsIpAddress());
+
+		
+		
+		//ToDO : os information, type, path/s , home user (document, download....)
+		
 	}	
 }

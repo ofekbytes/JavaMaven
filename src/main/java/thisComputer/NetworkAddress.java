@@ -1,4 +1,4 @@
-package operatingSystem;
+package thisComputer;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -78,3 +78,19 @@ public class NetworkAddress
 //IPv4 Address. . . . . . . . . . . : 
 //Subnet Mask . . . . . . . . . . . : 
 //Default Gateway . . . . . . . . . : 
+
+
+//InetAddress localHost = Inet4Address.getLocalHost();
+//NetworkInterface networkInterface = NetworkInterface.getByInetAddress(localHost);
+//networkInterface.getInterfaceAddresses().get(0).getNetworkPrefixLength();
+//a more complete approach:
+//
+//InetAddress localHost = Inet4Address.getLocalHost();
+//NetworkInterface networkInterface = NetworkInterface.getByInetAddress(localHost);
+//
+//for (InterfaceAddress address : networkInterface.getInterfaceAddresses()) {
+//    System.out.println(address.getNetworkPrefixLength());
+//}
+///24 means 255.255.255.
+//
+//shareimprove this answer

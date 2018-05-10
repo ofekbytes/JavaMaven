@@ -1,8 +1,8 @@
-package operatingSystem;
+package dataBase.sqlite;
 
-public class ThisComputer {
+public class UserAllowedList {
 
-	public ThisComputer() {
+	public UserAllowedList() {
 		// TODO Auto-generated constructor stub
 	}
 
