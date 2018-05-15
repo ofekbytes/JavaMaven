@@ -24,34 +24,38 @@ public class FileLanguageEncoding implements InterfaceLanguageEncoding
 		} 
 		catch (FileNotFoundException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println("catch file open >>" + e.getMessage());
 		}
 		
 	    try 
 	    {
-			os.write(Language_Hebrew);
+			os.write(LanguageHebrew13);
 		} 
 	    catch (IOException e) 
 	    {
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println("catch #1 write to file >>" + e.getMessage());
 		}
 	    
 	    try 
 	    {
-			os.write(187);
+			os.write(LanguageHebrew23);
 		} 
 	    catch (IOException e) 
 	    {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("catch #2 write to file >>" + e.getMessage());
 		}
 	    
 	    try 
 	    {
-			os.write(191);
+			os.write(LanguageHebrew33);  
 		} 
 	    catch (IOException e) 
 	    {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("catch #3 write to file >>" + e.getMessage());			
 		}
 	    
 

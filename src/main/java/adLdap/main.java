@@ -10,23 +10,24 @@ public class main {
 	public static void main(String[] args) 
 	{
 
-		System.out.println("\n***Method #1: \n");
-		OutsideDomain o = new OutsideDomain();
+//		//method OK
+//		System.out.println("\n***Method #1: \n");
+//		OutsideDomain o = new OutsideDomain();
 
 		
 		
-//		OutsideDomainMemberOf omf = null;
-//		
-//		try 
-//		{
-//			System.out.println("\n***Method #2: \n");
-//			omf = new OutsideDomainMemberOf();
-//		}
-//		catch (NamingException e) 
-//		{
-//			
-//			e.printStackTrace();
-//		}
+		OutsideDomainMemberOf omf = null;
+		
+		try 
+		{
+			System.out.println("\n***Method #2: \n");
+			omf = new OutsideDomainMemberOf();
+		}
+		catch (NamingException e) 
+		{
+			
+			e.printStackTrace();
+		}
 		
 	}
 
