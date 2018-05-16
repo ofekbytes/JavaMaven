@@ -1,5 +1,6 @@
 package thisComputer;
 
+import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -43,7 +44,7 @@ public class NetworkAddress
 	}
 
 
-	public void ipAddress()
+	public void fnCalcIPv4Address()
 	{
 
 		InetAddress IP = null ;
@@ -63,9 +64,16 @@ public class NetworkAddress
 	}
 	
 
+	public void fnCalcIPv6Address()
+	{
+	    setStIPv6Address(". . . . .");
+	}
+	
+	
 	public NetworkAddress() 
 	{
-		ipAddress();
+		fnCalcIPv4Address();
+		fnCalcIPv6Address();
 			
 		
 	}
