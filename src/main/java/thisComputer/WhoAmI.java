@@ -16,6 +16,7 @@ public class WhoAmI
 		OsName = osName;
 	}
 
+	
 
 	/****
 	 * 
@@ -35,6 +36,7 @@ public class WhoAmI
 		NetworkAddress na = new NetworkAddress();
 		System.out.println("Ip: " + na.getStIPv4Address());
 	}
+	
 	
 	
 	public WhoAmI() 

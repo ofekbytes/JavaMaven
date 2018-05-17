@@ -13,7 +13,7 @@ public class NetworkAddress
 	private String stSubnetMask  = "";
 	private String stDefaultGateway = "";
 	private String stHostName = "";
-
+	private String stHostNameFromIp = "";
 	
 	
 
@@ -61,18 +61,50 @@ public class NetworkAddress
 	}
 
 
-
+	public String getStHostNameFromIp() {
+		return stHostNameFromIp;
+	}
+	public void setStHostNameFromIp(String stHostNameFromIp) {
+		this.stHostNameFromIp = stHostNameFromIp;
+	}
+	
+	
 	/****
 	 * method (private)
 	 */
 	
-	//*** HostName ***//
+	//*** Host-Name-local ***//
 	private void fnCalcHostName()
 	{
 		InetAddress host = null;
 		String stReturn = "";
         try 
         {
+        	host = InetAddress.getLocalHost();        	            
+            stReturn =  host.getHostName().toString();
+            //System.out.println("hostname == " + host.getHostName());
+            
+        } 
+        catch (UnknownHostException ex) 
+        {
+        	stReturn = ". . . . ";
+            ex.printStackTrace();
+        }
+        
+        setStHostNameFromIp(stReturn);
+	}
+	
+
+	
+	//*** Host-Name-from IP ***//
+	private void fnCalcHostNameFromIp()
+	{
+		InetAddress host = null;
+		String stReturn = "";
+        try 
+        {
+        	fnCalcIPv4Address(); //*** IP ***
+        	
             host = InetAddress.getByName(getStIPv4Address());
             stReturn =  host.getHostName().toString();
             //System.out.println("hostname == " + host.getHostName());
@@ -86,7 +118,20 @@ public class NetworkAddress
         
         setStHostName(stReturn);
 	}
+
 	
+
+    
+//    private void fnCalcAllIPv4Address()
+//    {
+//    	InetAddress IP = null ;
+//    	
+//        InetAddress[] IP = InetAddress.getAllByName(args[0]);
+//        for (int i = 0; i < addr.length; i++)
+//          System.out.println(addr[i]);
+//      }
+//    }
+    
 	
 	//*** IPv4 ***//
 	private void fnCalcIPv4Address()
@@ -144,6 +189,7 @@ public class NetworkAddress
 		fnCalcIPv4Address();
 		fnCalcIPv6Address();
 		fnCalcHostName();
+		fnCalcHostNameFromIp();
 	} //constructor
 
 }
