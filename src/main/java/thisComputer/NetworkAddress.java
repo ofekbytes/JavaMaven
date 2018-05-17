@@ -6,12 +6,21 @@ import java.net.UnknownHostException;
 
 public class NetworkAddress 
 {
+	
+	//variable (private)
 	private String stIPv4Address = "";
 	private String stIPv6Address = "";
 	private String stSubnetMask  = "";
 	private String stDefaultGateway = "";
+	private String stHostName = "";
 
 	
+	
+
+	/***
+	 * 
+	 * Getter and Setter (public)
+	 */
 	public String getStIPv4Address() {
 		return stIPv4Address;
 	}
@@ -42,9 +51,45 @@ public class NetworkAddress
 	public void setStDefaultGateway(String stDefaultGateway) {
 		this.stDefaultGateway = stDefaultGateway;
 	}
+	
+	
+	public String getStHostName() {
+		return stHostName;
+	}
+	public void setStHostName(String stHostName) {
+		this.stHostName = stHostName;
+	}
 
 
-	public void fnCalcIPv4Address()
+
+	/****
+	 * method (private)
+	 */
+	
+	//*** HostName ***//
+	private void fnCalcHostName()
+	{
+		InetAddress host = null;
+		String stReturn = "";
+        try 
+        {
+            host = InetAddress.getByName(getStIPv4Address());
+            stReturn =  host.getHostName().toString();
+            //System.out.println("hostname == " + host.getHostName());
+            
+        } 
+        catch (UnknownHostException ex) 
+        {
+        	stReturn = ". . . . ";
+            ex.printStackTrace();
+        }
+        
+        setStHostName(stReturn);
+	}
+	
+	
+	//*** IPv4 ***//
+	private void fnCalcIPv4Address()
 	{
 
 		InetAddress IP = null ;
@@ -56,29 +101,53 @@ public class NetworkAddress
 		} 
 		catch (UnknownHostException e) 
 		{
-			stReturn = "";
+			stReturn = ". . . . ";
 			e.printStackTrace();
 		}
 		
 		setStIPv4Address(stReturn);
 	}
 	
-
-	public void fnCalcIPv6Address()
-	{
+	
+	
+	
+	//*** IPv6 ***//
+	private void fnCalcIPv6Address()
+	{			
 	    setStIPv6Address(". . . . .");
 	}
 	
 	
+	
+	
+	//*** Subnet Mask ***//
+	private void fnCalcISubnetMaskAddress()
+	{			
+	    System.out.println("fnCalcISubnetMaskAddress");
+	}
+	
+	
+	
+	//*** Default Gateway ***//
+	private void fnDefaultGatewayAddress()
+	{			
+	    System.out.println("fnDefaultGatewayAddress");
+	}
+	
+	
+	
+	/****
+	 * constructor - load all method to getter/setter variable.
+	 */
 	public NetworkAddress() 
 	{
 		fnCalcIPv4Address();
 		fnCalcIPv6Address();
-			
-		
-	}
+		fnCalcHostName();
+	} //constructor
 
 }
+
 
 
 //Connection-specific DNS Suffix  . : 
@@ -86,6 +155,7 @@ public class NetworkAddress
 //IPv4 Address. . . . . . . . . . . : 
 //Subnet Mask . . . . . . . . . . . : 
 //Default Gateway . . . . . . . . . : 
+
 
 
 //InetAddress localHost = Inet4Address.getLocalHost();
