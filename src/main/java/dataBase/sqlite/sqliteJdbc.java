@@ -316,7 +316,7 @@ public class sqliteJdbc
 //		sql.fnCreateDataBase(); // Create DataBase
 //		sql.fnCreateTable(); // Create Table
 //		sql.fnTableInsertRecords(); // Table Insert Records
-//		sql.fnSelectFromDatabase(); // Select From Database
+		sql.fnSelectFromDatabase(); // Select From Database
 //		sql.fnUdateDataBaseRecord(); // Udate DataBase Record (and show change) 
 //		sql.fnEraseDataBaseRecord(); // Erase DataBase Record 
 //		sql.fnEraseDataBaseALLRecords(); // Erase DataBase ALL Records	
