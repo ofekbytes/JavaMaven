@@ -29,9 +29,9 @@ public class OutsideDomainMemberOf
     private static final String authentication = null;
     private static final String protocol = null;
 
-    private static String username = "uid=newton";
+    private static String username = "read-only-admin";//"uid=newton";
 
-    private static final String MEMBER_OF = "ou=scientists,dc=example,dc=com";
+    private static final String MEMBER_OF = "ou=mathematicians"; //"ou=scientists,dc=example,dc=com";
     
     private static final String[] attrIdsToSearch = new String[] { MEMBER_OF };
     public static final String SEARCH_BY_SAM_ACCOUNT_NAME = "(sAMAccountName=%s)";
