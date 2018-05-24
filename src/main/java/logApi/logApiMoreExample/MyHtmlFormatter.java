@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.logging.Formatter;
 import java.util.logging.Handler;
 import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.LogRecord;
+import java.util.logging.Logger;
 
 
 public class MyHtmlFormatter extends Formatter
@@ -80,11 +82,5 @@ public class MyHtmlFormatter extends Formatter
 	        return "</table>\n</body>\n</html>";
 	    }
 
-
-	    
-	public static void main(String [] args)
-	{
-		MyHtmlFormatter mf = new MyHtmlFormatter();
-	}
 
 }
