@@ -1,0 +1,16 @@
+
+// [log4j - version #1 //
+//  Log4j search a "log4j.properties" file in the project directory.
+
+// log4j - version #1 configuration file:  "log4j.properties" 
+
+// log4j - version #1 configuration Syntax file:  "log4j.xml"
+
+
+
+// [log4j - version #2 //
+// Version 2 of Log4j supports configuration:  XML, JSON, YAML.
+// log4j - version #2 configuration file: "log4j2.xml", "log4j2.json", "log4j2.yaml". 
+
+ 
+ //

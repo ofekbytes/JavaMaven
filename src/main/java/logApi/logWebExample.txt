@@ -1,0 +1,9 @@
+
+
+[www]
+
+
+https://www.loggly.com/ultimate-guide/java-logging-basics/
+
+http://www.vogella.com/tutorials/Logging/article.html
+
