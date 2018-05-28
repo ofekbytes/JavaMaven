@@ -1,0 +1,31 @@
+
+----[scan.zip.2018.05.28.06]-----
+.
+.......................
+.
+.
+.
+----[scan.zip.2018.05.28.05]-----
+.
+-- @RestController
+-- @RequestMapping("/topics")
+-- @Autowired - make instance to service (singletons) - to make injection (maven use this instance)
+-- @Service - with getAllTopics() method.
+.
+.
+.
+----[scan.zip.2018.05.27.04]----
+.
+-- @RestController
+-- @RequestMapping("/topics")
+-- return a class method list array (List<Topic>)
+.
+.
+.
+----[scan.zip.2018.05.27.04 --> scan.zip.2018.05.27.01]---
+.
+-- @RestController
+-- @RequestMapping("/topics")
+
+-- @RestController
+-- @RequestMapping("/hello")
