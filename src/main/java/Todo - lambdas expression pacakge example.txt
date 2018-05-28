@@ -1,0 +1,72 @@
+
+**** Todo - lambdas (Anonymous_function) expression package example ****
+
+
+
+**** wikiepdia ****
+
+----[ https://en.wikipedia.org/wiki/Anonymous_function ]---- 
+
+
+
+Java
+Java supports anonymous functions, named Lambda Expressions, starting with JDK 8.[11]
+
+A lambda expression consists of a comma separated list of the formal parameters enclosed in parentheses, an arrow token (->), and a body. Data types of the parameters can always be omitted, as can the parentheses if there is only one parameter. The body can consist of one statement or a statement block.[12]
+
+// with no parameter
+() -> System.out.println("Hello, world.")
+
+// with one parameter (this example is an identity function).
+a -> a
+
+// with one expression
+(a, b) -> a + b
+
+// with explicit type information
+(long id, String name) -> "id: " + id + ", name:" + name
+
+// with a code block
+(a, b) -> { return a + b; }
+
+// with multiple statements in the lambda body. It needs a code block.
+// This example also includes two nested lambda expressions (the first one is also a closure).
+(id, defaultPrice) -> {
+  Optional<Product> product = productList.stream().filter(p -> p.getId() == id).findFirst();
+  return product.map(p -> p.getPrice()).orElse(defaultPrice);
+}
+Lambda expressions are converted to "functional interfaces" (defined as interfaces that contain only one abstract method in addition to one or more default or static methods[12]), as in the following example:
+
+public class Calculator {
+    interface IntegerMath {
+        int operation(int a, int b);
+
+        default IntegerMath swap() {
+          return (a, b) -> operation(b, a);
+        }
+    }
+
+    private static int apply(int a, int b, IntegerMath op) {
+        return op.operation(a, b);
+    }
+
+    public static void main(String... args) {
+        IntegerMath addition = (a, b) -> a + b;
+        IntegerMath subtraction = (a, b) -> a - b;
+        System.out.println("40 + 2 = " + apply(40, 2, addition));
+        System.out.println("20 - 10 = " + apply(20, 10, subtraction));
+        System.out.println("10 - 20 = " + apply(20, 10, subtraction.swap()));    
+    }
+}
+In this example, a functional interface called IntegerMath is declared. Lambda expressions that implement IntegerMath are passed to the apply() method to be executed. Default methods like swap define methods on functions.
+
+Java 8 introduced another mechanism named method reference (the :: operator) to create a lambda on an existing method. A method reference doesn't indicate the number or types of arguments because those are extracted from the abstract method of the functional interface.
+
+  IntBinaryOperator sum = Integer::sum;
+In the example above, the functional interface IntBinaryOperator declares an abstract method int applyAsInt(int, int), so the compiler looks for a method int sum(int, int) in the class java.lang.Integer.
+
+Java Limitations
+Java 8 lambdas have the following limitations:
+
+Lambdas can throw checked exceptions, but such lambdas will not work with the interfaces used by the Collection API.
+Variables that are in-scope where the lambda is declared may only be accessed inside the lambda if they are effectively final, i.e. if the variable is not mutated inside or outside of the lambda scope. 

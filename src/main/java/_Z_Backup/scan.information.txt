@@ -1,12 +1,28 @@
 
+
+
 ----[scan.zip.2018.05.28.06]-----
 .
+--Get--
+- API  \topics\some-id\ 
+-- api return only the topic that is requested
+-- url method access 
+-- mapping annotation on mathod
+-- stream filter
+
+-- @PathVariable take String id data from the variable {id} data "/topics/{id}"
+
+   //{id} -->  String id
+   @RequestMapping("/topics/{id}")
+   public Topic getTopic(@PathVariable String id) { }
+
 .......................
 .
 .
 .
 ----[scan.zip.2018.05.28.05]-----
 .
+--Get--
 -- @RestController
 -- @RequestMapping("/topics")
 -- @Autowired - make instance to service (singletons) - to make injection (maven use this instance)
@@ -16,6 +32,7 @@
 .
 ----[scan.zip.2018.05.27.04]----
 .
+--Get--
 -- @RestController
 -- @RequestMapping("/topics")
 -- return a class method list array (List<Topic>)
@@ -24,6 +41,7 @@
 .
 ----[scan.zip.2018.05.27.04 --> scan.zip.2018.05.27.01]---
 .
+--Get--
 -- @RestController
 -- @RequestMapping("/topics")
 
