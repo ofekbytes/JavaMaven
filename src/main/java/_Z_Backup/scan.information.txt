@@ -1,6 +1,50 @@
 
 
 
+.
+.
+.
+----[scan.zip.2018.05.28.08]-----
+.
+--put, delete--
+
+// @RequestBody pick the instance from the request body
+@RequestMapping(method=RequestMethod.PUT,value="/topics/{id}")
+public void updateTopic(@RequestBody Topic topic,@PathVariable String id)
+{
+    topicService.updateTopic(id, topic);
+}
+
+
+// @RequestBody pick the instance from the request body
+@RequestMapping(method=RequestMethod.DELETE,value="/topics/{id}")
+public void deleteTopic(@PathVariable String id)
+{
+    topicService.deleteTopic(id);
+}
+
+.
+.
+.
+----[scan.zip.2018.05.28.07]-----
+.
+--Post--
+
+//@RequestMapping ---> pick the instance from the request body
+//method=RequestMethod.POST ---> set to post (default is GET)
+//value="/topics" ---> 
+//@RequestBody Topic topic ---> GET topic instance (so we can add object to array list)
+
+
+// @RequestBody 
+@RequestMapping(method=RequestMethod.POST,value="/topics")
+ public void addTopic(@RequestBody Topic topic)
+ {
+	 topicService.addTopic(topic);
+ }
+.
+.
+.
 ----[scan.zip.2018.05.28.06]-----
 .
 --Get--
@@ -15,8 +59,6 @@
    //{id} -->  String id
    @RequestMapping("/topics/{id}")
    public Topic getTopic(@PathVariable String id) { }
-
-.......................
 .
 .
 .
