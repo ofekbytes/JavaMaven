@@ -1,0 +1,12 @@
+
+https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+
+https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html
+
+https://spring.io/guides/gs/accessing-data-mysql/
+
+https://stackoverflow.com/questions/21012799/why-do-i-need-to-configure-the-sql-dialect-of-a-data-source
+
+https://stackoverflow.com/questions/43407411/generationtarget-encountered-exception-accepting-command-error-executing-ddl-v/43408661
+
+https://stackoverflow.com/questions/47603204/spring-boot-jpa-error-error-executing-ddl-via-jdbc-statement
