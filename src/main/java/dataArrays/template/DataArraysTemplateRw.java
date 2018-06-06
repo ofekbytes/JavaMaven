@@ -6,10 +6,15 @@ import java.util.Map;
 
 public class DataArraysTemplateRw 
 {
+	//global
 	private HashMap<String,String> hmOne = new HashMap<String, String>();  
 	
-	public DataArraysTemplateRw() 
+	/***
+	 *  fnData() - method: set 
+	 */
+	public void fnData() 
 	{
+		//local
 		ArrayList<DataTemplate> arrDataTempalte = new ArrayList<DataTemplate>();
 		
 		/**
@@ -65,10 +70,11 @@ public class DataArraysTemplateRw
 		
 		
 	
-		System.out.println("\n");
+
 		/**
 		 * search for array
 		 */
+		System.out.println("\n");
 		for (int x=0; x < arrDataTempalte.size(); x++)
 		{
 			
@@ -81,7 +87,15 @@ public class DataArraysTemplateRw
 				hmOne.put("email",arrDataTempalte.get(x).getEmail());				
 			}
 		}
-		
+
+	}
+
+	
+	/***
+	 *  fnPrintHashMap() - method: print 
+	 */
+	private void fnPrintHashMap()
+	{
 		/**
 		 * print result
 		 */
@@ -92,10 +106,20 @@ public class DataArraysTemplateRw
 								+ hmOne.get("email") );
 
 	}
-
+	
+	/***
+	 * DataArraysTemplateRw - constructor - set, print
+	 */
+	private DataArraysTemplateRw() 
+	{
+		fnData();
+		fnPrintHashMap();
+	}
 	
 	public static void main (String [] args)
 	{
+		//call constructor
 		DataArraysTemplateRw dataArraysTemplateRw = new DataArraysTemplateRw();
+		
 	}
 }
