@@ -1,0 +1,175 @@
+https://springframework.guru/configuring-spring-boot-for-microsoft-sql-server/
+
+
+---[pom.xml]---
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>guru.springframework</groupId>
+    <artifactId>blogposts</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>Blog Posts</name>
+    <description>Misc Blog Posts</description>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.4.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <start-class>guru.springframework.blog.BlogPostsApplication</start-class>
+        <java.version>1.8</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>sqljdbc4</artifactId>
+            <version>4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
+
+---[application.properties]---
+
+spring.datasource.url=jdbc:sqlserver://localhost;databaseName=springbootdb
+spring.datasource.username=sa
+spring.datasource.password=Projects@123
+spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+spring.jpa.show-sql=true
+spring.jpa.hibernate.dialect=org.hibernate.dialect.SQLServer2012Dialect
+spring.jpa.hibernate.ddl-auto = create-drop
+
+---[User.java]---
+package guru.springframework.blog.domain;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user_tbl")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private String name;
+    private int age;
+    public User() {
+    }
+
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    @Override
+    public String toString() {
+        return "User{" +
+                ", name='" + name + '\'' +
+                ", Age=" + age +
+                '}';
+    }
+}
+
+
+---[UserRepository.java]---
+
+package guru.springframework.blog.repositories;
+
+import guru.springframework.blog.domain.User;
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserRepository extends CrudRepository<User, Integer> {
+    User findByName(String name);
+}
+
+---[UserRepositoryTest.java]---
+package guru.springframework.blog.repositories;
+
+import guru.springframework.blog.domain.User;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import static org.junit.Assert.*;
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserRepositoryTest {
+    @Autowired
+    private UserRepository userRepository;
+    @Before
+    public void setUp() throws Exception {
+        User user1= new User("Alice", 23);
+        User user2= new User("Bob", 38);
+        //save user, verify has ID value after save
+        assertNull(user1.getId());
+        assertNull(user2.getId());//null before save
+        this.userRepository.save(user1);
+        this.userRepository.save(user2);
+        assertNotNull(user1.getId());
+        assertNotNull(user2.getId());
+    }
+
+    @Test
+    public void testFetchData(){
+        /*Test data retrieval*/
+        User userA = userRepository.findByName("Bob");
+        assertNotNull(userA);
+        assertEquals(38, userA.getAge());
+        /*Get all products, list should only have two*/
+        Iterable<User> users = userRepository.findAll();
+        int count = 0;
+        for(User p : users){
+            count++;
+        }
+        assertEquals(count, 2);
+    }
+}
+	
+
