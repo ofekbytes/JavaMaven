@@ -1,4 +1,10 @@
 https://springframework.guru/configuring-spring-boot-for-microsoft-sql-server/
+https://springframework.guru/spring-boot-web-application-part-1-spring-initializr/
+https://springframework.guru/spring-boot-web-application-part-2-using-thymeleaf/
+https://springframework.guru/spring-boot-web-application-part-3-spring-data-jpa/
+https://springframework.guru/spring-boot-web-application-part-4-spring-mvc/
+https://springframework.guru/spring-boot-web-application-part-5-spring-security/
+
 
 
 ---[pom.xml]---

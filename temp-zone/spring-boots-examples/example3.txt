@@ -1,0 +1,159 @@
+
+---[application.properties]---
+
+spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=testdb
+spring.datasource.username=sa
+spring.datasource.password=myPassword
+spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerConnection
+spring.datasource.initialize=true
+
+
+
+---[JDBCTemplate.java]---
+
+package demo;
+
+import java.util.List;
+
+import org.apache.tomcat.jdbc.pool.DataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+public class BranchJDBCTemplate implements BranchDAO {
+
+    private DataSource dataSource;
+
+    @Autowired
+    protected JdbcTemplate jdbcTemplateObject;
+
+    @Autowired
+    @Override
+    public void setDataSource(DataSource ds) {
+        this.dataSource = ds;
+        this.jdbcTemplateObject = new JdbcTemplate(dataSource);
+    }
+
+    @Override
+    public void create(String name) {
+        String SQL = "insert into branches (name) values (?)";
+        jdbcTemplateObject.update(SQL, name);
+        System.out.println("Created Record Name = " + name);
+        return;
+    }
+
+    @Override
+    public Branch getBranch(Integer id) {
+        String SQL = "select * from branches where id = ?";
+        Branch student = jdbcTemplateObject.queryForObject(SQL, 
+                    new Object[]{id}, new BranchMapper());
+        return student;
+    }
+
+    @Override
+    public List<Branch> listBranches() {
+        String SQL = "select * from branches";
+        List <Branch> branches = jdbcTemplateObject.query(SQL, new BranchMapper());
+        return branches;
+    }
+
+    @Override
+    public void delete(Integer id) {
+        String SQL = "delete from branches where id = ?";
+        jdbcTemplateObject.update(SQL, id);
+        System.out.println("Deleted Record with ID = " + id );
+        return;
+    }
+
+    @Override
+    public void update(Integer id, String name) {
+        String SQL = "update Student set name = ? where id = ?";
+        jdbcTemplateObject.update(SQL, id);
+        System.out.println("Updated Record with ID = " + id );
+        return;
+    }
+
+}
+
+
+
+---[CustController.java]---
+
+package demo;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class CustController {
+
+    @RequestMapping("/customer")
+    public Cust customer(@RequestParam(value="name", required=false, defaultValue="World") String name) {
+
+        BranchJDBCTemplate branchTemplate = new BranchJDBCTemplate();
+
+        List<Branch> branchesList = branchTemplate.listBranches();
+
+        for (Branch branch : branchesList) {
+            System.out.print("ID : " + branch.getId());
+        }
+
+        return new Cust(12, "Test", "Test");
+
+    }
+
+}
+
+
+---[my jdbcTemplateObject instance]---
+protected JdbcTemplate jdbcTemplateObject;
+
+The issue I'm encountering as mentioned previously is that my jdbcTemplateObject instance ...
+
+protected JdbcTemplate jdbcTemplateObject;
+is null and therefore throwing an exception on the following line:
+
+List <Branch> branches = jdbcTemplateObject.query(SQL, new BranchMapper());
+
+
+---[beans.xml ]--- ???
+You are right, you need to have beans.xml with data-source configured in it.
+
+In CustController class customer() method, you are using new operator as:
+
+   BranchJDBCTemplate branchTemplate = new BranchJDBCTemplate();
+   
+and so this branchTemplate instance is not spring manged and so datasource is not autowired resulting in null value of jdbctemplate.
+
+Instead use the annotatioan as:
+
+--------------------------------------------------------------------
+    @Repository("branchDao")
+    public class BranchJDBCTemplate implements BranchDAO {
+    ...
+    }
+--------------------------------------------------------------------
+
+and access branchTemplate in CustController as:
+
+--------------------------------------------------------------------
+    @RestController
+    public class CustController {
+        @Autowired
+        @Qualifier("branchDao")
+        BranchJDBCTemplate branchTemplate;  
+        ...
+    }   
+--------------------------------------------------------------------
+
+    
+---[NOTES]---
+
+try using the following in your application.properties file
+
+--------------------------------------------------------------------
+spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=testdb;integratedSecurity=false;
+--------------------------------------------------------------------
+

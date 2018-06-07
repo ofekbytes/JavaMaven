@@ -1,0 +1,26 @@
+##
+## links ##
+##
+
+
+https://www.youtube.com/watch?v=OmJCpmIhPlw
+
+https://blog.angular-university.io/angular-http/
+
+#
+### ANGULAR 1 ###
+#
+https://www.youtube.com/watch?v=KhzGSHNhnbI&t=1568s
+
+
+## Angular 5 Json Load ##
+https://www.youtube.com/watch?v=HgKx36cpu60&vl=en
+https://blog.angular-university.io/angular-http/
+https://www.youtube.com/watch?v=OmJCpmIhPlw
+https://www.youtube.com/watch?v=TUz1HM6bHtc
+
+
+
+Angular 4
+https://www.youtube.com/watch?v=k5E2AVpwsko
+https://www.youtube.com/watch?v=KhzGSHNhnbI&t=1568s
