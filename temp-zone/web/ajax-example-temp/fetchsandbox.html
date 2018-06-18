@@ -60,7 +60,7 @@
       .then((data) => {
         let output = '<h2 class="mb-4">Users</h2>';
         data.forEach(function(user){
-           if ((user.barcode == document.getElementById('title').value) )
+          // if ((user.barcode == document.getElementById('title').value) )
           output += `
             <ul class="list-group mb-3">
               <li class="list-group-item">barcode: ${user.barcode}</li>
@@ -73,7 +73,27 @@
       })
     }
 
-    function getPosts(){
+    // function getPosts(){
+    //   fetch('http://localhost:8080/greetings')
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     let output = '<h2 class="mb-4">Posts</h2>';
+    //     data.forEach(function(post){
+    //       output += `
+    //         <div class="card card-body mb-3">
+    //           <h3>${post.barcode}</h3>
+    //           <p>${post.source}</p>
+    //         </div>
+    //       `;
+    //     });
+    //     //document.getElementById('output').innerHTML = "please Wait";
+    //     document.getElementById('output').innerHTML = output;
+        
+    //     console.log("barcode[0] ===> " + res.data.post[0].barcode);
+    //   })
+    // }
+
+   function getPosts(){
       fetch('http://localhost:8080/greetings')
       .then((res) => res.json())
       .then((data) => {
@@ -83,15 +103,18 @@
             <div class="card card-body mb-3">
               <h3>${post.barcode}</h3>
               <p>${post.source}</p>
+              <p>${post.destination}</p>
+              <p>${post.estrSertypename}</p>
+              <p>${post.estrIntypename}</p>
+              <p>${post.brixMascode}</p>
+              <p>${post.brixMasname}</p>                                          
             </div>
           `;
         });
-        document.getElementById('output').innerHTML = "please Wait";
         document.getElementById('output').innerHTML = output;
-        
-        console.log("barcode[0] ===> " + res.data.post[0].barcode);
       })
     }
+
 
     function addPost(e){
       e.preventDefault();
