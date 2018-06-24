@@ -10,6 +10,7 @@ package logApi;
 import java.util.logging.Level;
 //import java.util.logging.*;
 import java.util.logging.Logger;
+import logApi.Log4j;
 
 public class LogUtil 
 {
