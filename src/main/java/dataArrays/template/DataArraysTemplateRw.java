@@ -7,7 +7,7 @@ import java.util.Map;
 public class DataArraysTemplateRw 
 {
 	//global
-	private HashMap<String,String> hmOne = new HashMap<String, String>();  
+	private HashMap<String,String> hmOne = new HashMap<String, String>();
 	
 	/***
 	 *  fnData() - method: set 

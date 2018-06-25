@@ -1,8 +1,8 @@
-??? 24, 2018 6:04:10 PM convertMethods.DateTime.UseLogger doSomeThingAndLog
+??? 25, 2018 12:59:39 PM convertMethods.DateTime.UseLogger doSomeThingAndLog
 SEVERE: Info Log
-??? 24, 2018 6:04:10 PM convertMethods.DateTime.UseLogger doSomeThingAndLog
+??? 25, 2018 12:59:39 PM convertMethods.DateTime.UseLogger doSomeThingAndLog
 SEVERE: Info Log
-??? 24, 2018 6:04:10 PM convertMethods.DateTime.UseLogger doSomeThingAndLog
+??? 25, 2018 12:59:39 PM convertMethods.DateTime.UseLogger doSomeThingAndLog
 WARNING: Info Log
-??? 24, 2018 6:04:10 PM convertMethods.DateTime.UseLogger doSomeThingAndLog
+??? 25, 2018 12:59:39 PM convertMethods.DateTime.UseLogger doSomeThingAndLog
 INFO: Info Log
