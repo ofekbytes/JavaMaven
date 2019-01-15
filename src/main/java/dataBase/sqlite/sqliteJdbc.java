@@ -26,7 +26,7 @@ public class sqliteJdbc
 	    try 
 	    {
 	    	Class.forName("org.sqlite.JDBC");
-	        c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	        c = DriverManager.getConnection("jdbc:sqlite:sqliteDb.db");
 	    } 
 	    catch ( Exception e ) 
 	    {
@@ -49,7 +49,7 @@ public class sqliteJdbc
 	      
 	      try {
 	         Class.forName("org.sqlite.JDBC");
-	         c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	         c = DriverManager.getConnection("jdbc:sqlite:sqliteDb.db");
 	         System.out.println("Opened database successfully");
 
 	         stmt = c.createStatement();
@@ -82,7 +82,7 @@ public class sqliteJdbc
 	      try 
 	      {
 	         Class.forName("org.sqlite.JDBC");
-	         c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	         c = DriverManager.getConnection("jdbc:sqlite:sqliteDb.db");
 	         c.setAutoCommit(false);
 	         System.out.println("Opened database successfully");
 
@@ -131,7 +131,7 @@ public class sqliteJdbc
 		   Statement stmt = null;
 		   try {
 		      Class.forName("org.sqlite.JDBC");
-		      c = DriverManager.getConnection("jdbc:sqlite:test.db");
+		      c = DriverManager.getConnection("jdbc:sqlite:sqliteDb.db");
 		      c.setAutoCommit(false);
 		      System.out.println("Opened database successfully");
 
@@ -174,7 +174,7 @@ public class sqliteJdbc
 		   
 		   try {
 		      Class.forName("org.sqlite.JDBC");
-		      c = DriverManager.getConnection("jdbc:sqlite:test.db");
+		      c = DriverManager.getConnection("jdbc:sqlite:sqliteDb.db");
 		      c.setAutoCommit(false);
 		      System.out.println("Opened database successfully");
 
@@ -221,7 +221,7 @@ public class sqliteJdbc
 	      
 	      try {
 	         Class.forName("org.sqlite.JDBC");
-	         c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	         c = DriverManager.getConnection("jdbc:sqlite:sqliteDb.db");
 	         c.setAutoCommit(false);
 	         System.out.println("Opened database successfully");
 
@@ -268,7 +268,7 @@ public class sqliteJdbc
 	      
 	      try {
 	         Class.forName("org.sqlite.JDBC");
-	         c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	         c = DriverManager.getConnection("jdbc:sqlite:sqliteDb.db");
 	         c.setAutoCommit(false);
 	         System.out.println("Opened database successfully");
 
