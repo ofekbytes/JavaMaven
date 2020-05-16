@@ -14,7 +14,7 @@ public class TerminalCommands
 		try 
 		{
 			//rt.exec("mspaint");
-			rt.exec("notepad");
+			rt.exec("notepad"); 
 			//rt.exec("notepad c:\\1\\login.log");
 			//rt.exec("explorer c:\\users\\kesslery\\git\\JavaMaven");
 
@@ -24,6 +24,13 @@ public class TerminalCommands
 			//rt.exec("explorer  %DOCS%");
 			//rt.exec("explorer  %USERPROFILE%\\Documents");
 			//rt.exec("explorer  %USERPROFILE%");
+			
+			
+			/***
+			 * command idea:
+			 * notepad, mspaint,...
+			 * gnome-terminal, konsole, mysql-workbench
+			 */
 			
 		} 
 		catch (IOException e) 
