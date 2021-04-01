@@ -2,10 +2,12 @@ package adLdap;
 
 import javax.naming.NamingException;
 
-public class main {
+public class ldapMain {
 
-//	public main() {
-//	}
+	public ldapMain() {
+		System.out.println("\n***Method #1: \n");
+		OutsideDomain o = new OutsideDomain();
+	}
 
 	public static void main(String[] args) 
 	{

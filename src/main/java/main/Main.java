@@ -1,5 +1,6 @@
 package main;
 
+import dataBase.sqlite.SqliteJdbcMain;
 import thisComputer.ThisComputer;
 
 public class Main {
@@ -7,7 +8,9 @@ public class Main {
 	public Main() {
 		
 //		new NetworkAddress(); 
-		new ThisComputer();
+//		new ThisComputer();
+		
+		new SqliteJdbcMain();
 		
 /* TODO / FIX 
  * -- NetworkAddress
