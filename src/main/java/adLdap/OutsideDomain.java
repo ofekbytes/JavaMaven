@@ -31,6 +31,9 @@ public class OutsideDomain
 	
 	public OutsideDomain() 
 	{
+		
+		  System.out.println("----[OutsideDomain]----");
+		  
 		  ArrayList members = new ArrayList();
 	  	  
 		  Hashtable <String, Object> env = new Hashtable<String, Object>();

@@ -6,7 +6,7 @@ public class ldapMain {
 
 	public ldapMain() {
 		System.out.println("\n***Method #1: \n");
-		OutsideDomain o = new OutsideDomain();
+//		OutsideDomain o = new OutsideDomain();
 	}
 
 	public static void main(String[] args) 
